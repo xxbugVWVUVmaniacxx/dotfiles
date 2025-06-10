@@ -1,0 +1,46 @@
+# editor completions
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline=false
+
+format='''
+[╭─](bold green)
+[│](bold green)
+[│](bold green)                                  $character   $cmd_duration
+[└───────────────────────────────────────────────────────────](bold green)
+           ~~~ $time ~~~
+[╭───────────────────────────────────────────────────────────](bold green)
+[│](bold green)$directory$git_status$git_branch
+[└─  ](bold green)
+'''
+# ╭╴ ╰─
+
+continuation_prompt = ' '
+
+[directory]
+home_symbol=' '
+format='[ $path::]($style)'
+style='bg:#769ff0'
+
+[git_branch]
+always_show_remote=true
+style='bg:#a9c3f6'
+format='[ on $symbol$branch(:$remote_branch) ]($style)'
+
+[character]
+success_symbol='[](bright-green)'
+error_symbol='[✗](bright-red)'
+
+[cmd_duration]
+format=' [ $duration]($style) '
+min_time=0
+show_milliseconds=true
+
+[time]
+disabled = false
+time_format = "%c" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[󰋑[ $time ](fg:#a0a9cb)]($style)'
+
+[git_status]
+format='([\[$all_status$ahead_behind\]]($style))'
+style='bg:#a9c3f6'

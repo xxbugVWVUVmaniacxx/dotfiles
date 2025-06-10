@@ -1,0 +1,33 @@
+##############################
+## aliases
+##############################
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcne='git commit --no-edit'
+alias gbd='git branch -D'
+alias glo='git log --oneline'
+alias gs='git status'
+
+##############################
+## functions
+##############################
+function set_win_title() {
+	local title_for_pwd=$PWD
+	if [[ "$PWD" == *radlad* ]]; then
+		title_for_pwd="root"
+	fi
+	echo -ne "\033]0; $USERNAME, but in $title_for_pwd \007"
+}
+
+##############################
+## inits
+##############################
+precmd_functions+=(set_win_title)
+
+##############################
+## custom prompt
+##############################
+eval "$(starship init zsh)"
