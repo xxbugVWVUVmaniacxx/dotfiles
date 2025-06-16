@@ -2,6 +2,7 @@
 ## aliases
 ##############################
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
@@ -10,6 +11,7 @@ alias gcne='git commit --no-edit'
 alias gbd='git branch -D'
 alias glo='git log --oneline'
 alias gs='git status'
+alias omp='/opt/homebrew/bin/oh-my-posh'
 
 ##############################
 ## functions
@@ -31,3 +33,4 @@ precmd_functions+=(set_win_title)
 ## custom prompt
 ##############################
 eval "$(starship init zsh)"
+# eval "$(omp init zsh --config ~/code/alt-themes/MPrincess.omp.json)"
