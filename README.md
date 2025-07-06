@@ -1,4 +1,4 @@
-![]('./res/prompt-example.jpg')
+<img src='res/prompt-example.png' width=400/>
 
 ## Configs
 
