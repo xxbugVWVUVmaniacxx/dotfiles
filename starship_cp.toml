@@ -3,44 +3,64 @@
 add_newline=false
 
 format='''
-[╭─](bold green)
-[│](bold green)
-[│](bold green)                                  $character   $cmd_duration
-[└───────────────────────────────────────────────────────────](bold green)
-           ~~~ $time ~~~
-[╭───────────────────────────────────────────────────────────](bold green)
-[│](bold green)$directory$git_status$git_branch
-[└─  ](bold green)
+[┌────────◎                                                           ](bold hot_main)
+[│                                     $character     $cmd_duration](bold hot_main)
+[┝───────────┬────────────────────────────────────┬────────](bold hot_main)
+[│           │ ~~~ $time ~~~ │     ${custom.web}           ](bold hot_main)
+[┝───────────┴────────────────────────────────────┴────────](bold hot_main)
+[│$directory$git_status$git_branch                           ](bold hot_main)
+[└─${custom.motorcycle} ](bold hot_main)
 '''
-# ╭╴ ╰─
+
+# Box Drawing reference: https://en.wikipedia.org/wiki/Box_Drawing
+
+palette='hot_main'
+[palettes.hot_main]
+    hot_main='#91b3f4'
+    hot_main_but_darker='#5675b2'
+    light_solarized_bg='#17495c'
+    yummerz='#f0769f'
+    sheesh='#1d2230'
 
 continuation_prompt = ' '
 
 [directory]
 home_symbol=' '
-format='[ $path::]($style)'
-style='bg:#769ff0'
+style='fg:hot_main_but_darker'
+format='[ in $path]($style)'
 
 [git_branch]
 always_show_remote=true
-style='bg:#a9c3f6'
+style='fg:hot_main_but_darker'
 format='[ on $symbol$branch(:$remote_branch) ]($style)'
 
+[git_status]
+format='([\[$all_status$ahead_behind\]]($style))'
+style='fg:hot_main_but_darker'
+
 [character]
-success_symbol='[](bright-green)'
-error_symbol='[✗](bright-red)'
+success_symbol='[](bold bright-green)'
+error_symbol='[✗](bold bright-red)'
 
 [cmd_duration]
-format=' [ $duration]($style) '
+format=' [$duration]($style) '
 min_time=0
 show_milliseconds=true
 
 [time]
 disabled = false
 time_format = "%c" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[󰋑[ $time ](fg:#a0a9cb)]($style)'
+style = "hot_main"
+format = '[󰋑 $time]($style)'
 
-[git_status]
-format='([\[$all_status$ahead_behind\]]($style))'
-style='bg:#a9c3f6'
+# Custom B)
+[custom.motorcycle]
+command="echo ''"
+when=true
+style='bold yummerz'
+format = "[$output]($style) "
+
+[custom.web]
+command='echo "🕸"'
+when=true
+style='bold yummerz'

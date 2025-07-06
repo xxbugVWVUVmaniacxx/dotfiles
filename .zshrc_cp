@@ -12,7 +12,7 @@ alias gbd='git branch -D'
 alias glo='git log --oneline'
 alias gs='git status'
 alias omp='/opt/homebrew/bin/oh-my-posh'
-
+alias buff='zsh | awk "{print '│ ' }}0"'
 ##############################
 ## functions
 ##############################
@@ -28,9 +28,13 @@ function set_win_title() {
 ## inits
 ##############################
 precmd_functions+=(set_win_title)
-
+eval "$(ssh-agent -s)" >/dev/null
+ssh-add ~/.ssh/blah-key 2>/dev/null
+ 
 ##############################
 ## custom prompt
 ##############################
 eval "$(starship init zsh)"
 # eval "$(omp init zsh --config ~/code/alt-themes/MPrincess.omp.json)"
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zsh | awk '{print "│ " $0}'

@@ -1,3 +1,5 @@
+![]('./res/prompt-example.jpg')
+
 ## Configs
 
 ### Starship prompt
